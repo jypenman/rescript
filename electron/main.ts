@@ -332,13 +332,14 @@ function createWindow(): BrowserWindow {
   win.on("enter-full-screen", emitFullScreen);
   win.on("leave-full-screen", emitFullScreen);
 
-  // Open external http(s) links in the OS browser; keep app:// / localhost in-app.
+  // Open external http(s) links in the OS browser and never spawn a child
+  // window: one would inherit the preload (and with it the whole IPC surface)
+  // for whatever URL it was opened on — file:, data:, javascript: and so on.
   win.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith("http:") || url.startsWith("https:")) {
       void shell.openExternal(url);
-      return { action: "deny" };
     }
-    return { action: "allow" };
+    return { action: "deny" };
   });
   win.webContents.on("will-navigate", (event, url) => {
     const isApp = url.startsWith("app://");

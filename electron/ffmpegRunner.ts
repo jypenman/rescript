@@ -2,7 +2,7 @@
  * Spawning and supervising the bundled native ffmpeg.
  *
  * Deliberately free of `electron` imports so tests can drive it with plain
- * Node (tests/native-ffmpeg-test.ts). The IPC surface lives in ./media.ts.
+ * Node. The IPC surface lives in ./media.ts.
  */
 import { spawn } from "node:child_process";
 import { join } from "node:path";

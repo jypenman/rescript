@@ -1294,7 +1294,7 @@ async function runWhisper(
     // Plain decoding — no forced decoder prefix. Priming the decoder collapses
     // short VAD segments on every model here, whether with Whisper's
     // <|startofprev|> filler prompt or CrisperWhisper's mode tags. See the note
-    // above MODELS in lib/models.ts; vad-regression-test.ts guards it.
+    // above MODELS in lib/models.ts; a regression test guards it.
     language: transcriptLanguage,
   };
 

@@ -267,8 +267,8 @@ export async function releaseFFmpeg(): Promise<void> {
  * worker, hands the gigabyte back, and makes the pending `exec` reject so the
  * caller unblocks. The next export builds a fresh core.
  *
- * Exported, and `stallTimeoutMs` overridable, only so `tests/ffmpeg-watchdog-test.ts`
- * can drive it against a stub — there is no way to wedge a real core on demand.
+ * Exported, and `stallTimeoutMs` overridable, only so tests can drive it
+ * against a stub — there is no way to wedge a real core on demand.
  */
 export async function execWithWatchdog(
   ffmpeg: FFmpeg,
